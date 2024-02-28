@@ -34,5 +34,41 @@ Para ello, se realizará una cierta cantidad de pasos:
 8. Finalmente seleccionamos en nuestro nuevo menú de arranque, el sistema operativo Linux y eso seria todo.
 		
 ## Instalacion de Quartus
-Para la instación de Quartus seguiremos una serie de pasos
+Para la instación de Quartus seguiremos una serie de pasos:
+1. En una primera instacia, descargamos el instalador que lo podemos enccontrar mediante el siguiente [enlace](https://www.intel.la/content/www/xl/es/products/details/fpga/development-tools/quartus-prime/resource.html)
+   
+2. Una vez descargado el archivo .run, ubicamos el lugar de descarga y abrimos la terminal en este lugar.
+
+3. Ejecutamos los siguientes códigos en la terminal:
+---
+    chmod +x qinst-lite-linux-23.1std-991.run 
+---
+4. Posteriormente ejecutamos en siguiente códgigo
+---
+    ./qinst-lite-linux-23.1std-991.run 
+---
+5. Esperamos que se ejecute el instalador, seguimos las instrucciones  y finalizamos la instalación.
+
+6. Si no se crea un acceso directo al finalizar, se puede realizar de forma manual como lo hicimos de la siguiente forma:
+   -  Abrimos la terminal y ejecutamos el siguiente código:
+     ---
+         export ALTERAPATH="/home/charlie/intelFPGA_lite/23.1std/"
+	     export QUARTUS_ROOTDIR=${ALTERAPATH}/quartus
+	     export QUARTUS_ROOTDIR_OVERRIDE="$QUARTUS_ROOTDIR"
+	     export PATH=$PATH:${ALTERAPATH}/quartus/sopc_builder/bin
+	     export PATH=$PATH:${ALTERAPATH}/nios2eds/bin
+	     export PATH=$PATH:${QSYS_ROOTDIR}
+     ---
+     
+   -  Posteriormente introducimos este códgio a la terminal:
+     ---
+         #export QSYS_ROOTDIR="/home/charlie/intelFPGA_lite/23.1std/quartus/sopc_builder/bin"
+     ---
+   -  Seguido introducimos el siguiente código, también en la términal:
+     ---
+     	 sudo ln -s $QUARTUS_ROOTDIR/bin/quartus /bin/quartus
+     ---
+   - Finalmente para ejecutar el programa, ejercutamos en comando *quartus* en la terminal y finalizariamos el proceso
+
+   ![quartus](https://i.ytimg.com/vi/_jc3ezjDycs/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYACygWKAgwIABABGGUgZShlMA8=&rs=AOn4CLAb6FEBYNo-wZTjV3nRVDXeq6s_yg)
 ## Instalación de Questa
