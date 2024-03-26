@@ -48,3 +48,8 @@ Resultando:
 
 ### Implementación del sumador de 1 bit
 
+
+### Funcionamiento en la FPGA
+
+    [Aquí](https://youtu.be/tCylA9rU-R8) se muestra un video detallado del funcionamiento del sumador
+
