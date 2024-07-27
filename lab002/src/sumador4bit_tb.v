@@ -17,7 +17,14 @@ sumador4bit dut (
     .cout4(cout4)
 );
 
+wire [0:6] Sseg;
 
+//modulo responsable del 7-segmentos
+
+BCDtoSSeg dut2 (
+	s,
+	Sseg
+);
 
 
 // Damos valores iniciales a las entradas para que los modulos produzcan salidas
@@ -43,7 +50,7 @@ sumador4bit dut (
         #101 $display("a = %b, b = %b, Suma = %b, cout = %b", a, b, s, cout4);
 
         // Caso 6
-        #100 a = 4'b1111; b = 4'b1111; cin = 1'b1;  // a = 15, b = 15, resultado = 31, Resultado_en_binario = 1111, cout = 1
+        #100 a = 4'b1111; b = 4'b1110; cin = 1'b0;  // a = 15, b = 14, resultado = 29, Resultado_en_binario = 1110, cout = 1
         #101 $display("a = %b, b = %b, Suma = %b, cout = %b", a, b, s, cout4);
 
         // Caso 7
@@ -51,7 +58,7 @@ sumador4bit dut (
         #101 $display("a = %b, b = %b, Suma = %b, cout = %b", a, b, s, cout4);
 
         // Caso 8
-        #100 a = 4'b1100; b = 4'b0011; cin = 1'b1;  // a = 12, b = 3, resultado = 16, Resultado_en_binario = 0000, cout = 1
+        #100 a = 4'b1100; b = 4'b0011; cin = 1'b0;  // a = 12, b = 3, resultado = 15, Resultado_en_binario = 0000, cout = 0
         #101 $display("a = %b, b = %b, Suma = %b, cout = %b", a, b, s, cout4);
 	
 	
