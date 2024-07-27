@@ -110,3 +110,4 @@ assign cout = (a & b) | (b & cin) | (cin & a);
 Para visualizar las formas de onda se usó la herramienta de simulación GTKWave, importando el archivo `top.gtkw` y verificando las señales `sum` y `cout`.
 
 link video sumador 1bit https://youtu.be/hOxkN9kVxbQ?feature=shared
+link video sumador 4bit https://youtu.be/fQqqL14Feaw?feature=shared
