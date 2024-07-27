@@ -17,14 +17,7 @@ sumador4bit dut (
     .cout4(cout4)
 );
 
-wire [0:6] Sseg;
 
-//modulo responsable del 7-segmentos
-
-BCDtoSSeg dut2 (
-	s,
-	Sseg
-);
 
 
 // Damos valores iniciales a las entradas para que los modulos produzcan salidas
