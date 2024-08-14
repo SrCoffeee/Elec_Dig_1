@@ -27,13 +27,21 @@ Este proyecto tiene como objetivo mostrar cómo se puede utilizar una FPGA para 
 1. **Crear el archivo Verilog**: Crea un nuevo archivo Verilog para el sumador de 4 bits.
 2. **Definir el módulo**:
     ```verilog
-    module Sumador4Bits (
-        input [3:0] A,
-        input [3:0] B,
-        output [3:0] SUMA,
-        output CARRY
+    module sumador4bit(
+        input [3:0] a,
+        input [3:0] b,
+        input cin,
+        output [3:0] s,
+        output cout4
     );
-        assign {CARRY, SUMA} = A + B;
+        // Declaración de cables
+        wire cout1, cout2, cout3;
+
+        // Instanciación de los sumadores de 1 bit en secuencia
+        sumador1bit sum0 (a[0], b[0], cin,   s[0], cout1);
+        sumador1bit sum1 (a[1], b[1], cout1, s[1], cout2);
+        sumador1bit sum2 (a[2], b[2], cout2, s[2], cout3);
+        sumador1bit sum3 (a[3], b[3], cout3, s[3], cout4);
     endmodule
     ```
 
@@ -67,28 +75,31 @@ Este proyecto tiene como objetivo mostrar cómo se puede utilizar una FPGA para 
 1. **Crear el archivo de top-level**: Crea un archivo Verilog que integre el sumador y el display.
     ```verilog
     module TopLevel (
-        input [3:0] A,
-        input [3:0] B,
+        input [3:0] a,
+        input [3:0] b,
+        input cin,
         output [6:0] SEG,
-        output CARRY
+        output cout4
     );
-        wire [3:0] SUMA;
+        wire [3:0] s;
 
-        Sumador4Bits U1 (
-            .A(A),
-            .B(B),
-            .SUMA(SUMA),
-            .CARRY(CARRY)
+        sumador4bit U1 (
+            .a(a),
+            .b(b),
+            .cin(cin),
+            .s(s),
+            .cout4(cout4)
         );
 
         Display7Segmentos U2 (
-            .BIN(SUMA),
+            .BIN(s),
             .SEG(SEG)
         );
     endmodule
     ```
-2. **Simular el diseño**: Utiliza el simulador de Quartus II para verificar el funcionamiento del diseño.
 
+2. **Simular el diseño**: Utiliza el simulador de Quartus II para verificar el funcionamiento del diseño
+   
 ## Conclusiones
 Este proyecto demuestra cómo se puede utilizar una FPGA para implementar un sumador de 4 bits y mostrar el resultado en un display de 7 segmentos. La utilización de Verilog permite una descripción clara y estructurada del hardware, facilitando el diseño y la simulación.
 
