@@ -98,8 +98,29 @@ Este proyecto tiene como objetivo mostrar cómo se puede utilizar una FPGA para 
     endmodule
     ```
 
-2. **Simular el diseño**: Utiliza el simulador de Quartus II para verificar el funcionamiento del diseño
-   
+2. **Añadir el módulo FPGA**:
+    ```verilog
+    module FPGA(
+        input [3:0] a,
+        input [3:0] b,
+        // input cin,
+        output wire [0:6] seg,
+        output [3:0] an,
+        output coutt
+    );
+        wire cin = 0;
+        wire [3:0] s;
+        wire cout;
+
+        assign an = 4'b1110;
+        sumador4bit sum (a, b, cin, s, cout);
+        BCDtoSSeg segm (s, seg);
+        assign coutt = !cout;
+    endmodule
+    ```
+
+3. **Simular el diseño**: Utiliza el simulador de Quartus II para verificar el funcionamiento del diseño.
+
 ## Conclusiones
 Este proyecto demuestra cómo se puede utilizar una FPGA para implementar un sumador de 4 bits y mostrar el resultado en un display de 7 segmentos. La utilización de Verilog permite una descripción clara y estructurada del hardware, facilitando el diseño y la simulación.
 
