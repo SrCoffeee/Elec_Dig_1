@@ -18,7 +18,6 @@ Este proyecto tiene como objetivo mostrar cómo se puede utilizar una FPGA para 
 - FPGA (por ejemplo, Altera DE2-115)
 - Software de desarrollo (por ejemplo, Quartus II)
 - Display de 7 segmentos
-- Cables y protoboard (si es necesario)
 
 ## Configuración del Entorno
 1. **Instalar el software de desarrollo**: Descarga e instala Quartus II o el software de desarrollo compatible con tu FPGA.
